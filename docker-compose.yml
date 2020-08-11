@@ -1,0 +1,14 @@
+---
+version: "3"
+
+services:
+  s3-uploader:
+    container_name: s3-uploader
+    build: .
+    restart: always
+    environment:
+      - DIRECTORY
+      - S3_BUCKET
+    volumes:
+      - ${DIRECTORY}:${DIRECTORY}:ro
+      - ${HOME}/.aws/credentials:/root/.aws/credentials:ro
