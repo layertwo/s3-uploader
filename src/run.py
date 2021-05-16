@@ -20,7 +20,7 @@ class UploadToS3(FileSystemEventHandler):
         try:
             self.client.upload_file(event.src_path, self.bucket_name, os.path.basename(event.src_path))
             logging.info("%s: upload done", event.src_path)
-        except ClientError as ex:
+        except Exception as ex:
             logging.error(ex)
 
 
